@@ -78,3 +78,13 @@ export * from './scripting/engine_nodes/inputNodes';
 export * from './scripting/engine_nodes/audioNodes';
 export * from './scripting/engine_nodes/uiNodes';
 export * from './scripting/engine_nodes/animationNodes';
+
+// Animation
+export * from './animation/spriteAnimation';
+export * from './animation/timeline';
+export * from './animation/animator';
+
+// UI Runtime
+export * from './ui_runtime/widgets';
+export * from './ui_runtime/layout';
+export * from './ui_runtime/uiSystem';
