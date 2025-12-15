@@ -2,7 +2,7 @@
  * Graph debugger - breakpoints, step, watch values
  */
 
-import { NodeId } from './compiler';
+import { NodeId } from './graphTypes';
 import { GraphRuntime } from './runtime';
 
 export interface WatchExpression {

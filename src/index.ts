@@ -71,13 +71,13 @@ export * from './scripting/graph/debugger';
 export * from './scripting/graph/serializer';
 export * from './scripting/autogen/apiCatalog';
 export * from './scripting/autogen/nodeAutoGen';
-export * from './scripting/engine_nodes/ecsNodes';
-export * from './scripting/engine_nodes/transformNodes';
-export * from './scripting/engine_nodes/physicsNodes';
-export * from './scripting/engine_nodes/inputNodes';
-export * from './scripting/engine_nodes/audioNodes';
-export * from './scripting/engine_nodes/uiNodes';
-export * from './scripting/engine_nodes/animationNodes';
+export { registerECSNodes } from './scripting/engine_nodes/ecsNodes';
+export { registerTransformNodes } from './scripting/engine_nodes/transformNodes';
+export { registerPhysicsNodes } from './scripting/engine_nodes/physicsNodes';
+export { registerInputNodes } from './scripting/engine_nodes/inputNodes';
+export { registerAudioNodes } from './scripting/engine_nodes/audioNodes';
+export { registerUINodes } from './scripting/engine_nodes/uiNodes';
+export { registerAnimationNodes } from './scripting/engine_nodes/animationNodes';
 
 // Animation
 export * from './animation/spriteAnimation';

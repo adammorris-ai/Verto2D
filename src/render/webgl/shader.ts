@@ -114,7 +114,7 @@ export class Shader {
     // Get attribute count
     const attribCount = this.gl.getProgramParameter(this.program, this.gl.ACTIVE_ATTRIBUTES);
     for (let i = 0; i < attribCount; i++) {
-      const info = this.gl.getActiveAttribute(this.program, i);
+      const info = this.gl.getActiveAttrib(this.program, i);
       if (info) {
         const location = this.gl.getAttribLocation(this.program, info.name);
         this.attributeLocations.set(info.name, location);

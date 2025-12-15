@@ -2,7 +2,7 @@
  * Math nodes
  */
 
-import { NodeDefinition, ExecutionContext, ExecutionResult, NodeCategory } from '../graph/nodeRegistry';
+import { NodeDefinition, ExecutionResult, NodeCategory } from '../graph/nodeRegistry';
 import { PinType } from '../graph/pinTypes';
 
 export function createMathNodes(): NodeDefinition[] {
@@ -20,10 +20,10 @@ export function createMathNodes(): NodeDefinition[] {
         { id: 'result', name: 'Result', type: PinType.Float, direction: 'output' },
       ],
       pure: true,
-      execute: (node, context) => {
-        const a = (context.getInputValue(node.id, 'a') as number) || 0;
-        const b = (context.getInputValue(node.id, 'b') as number) || 0;
-        context.setOutputValue(node.id, 'result', a + b);
+      execute: (_node, context) => {
+        const a = (context.getInputValue('node', 'a') as number) || 0;
+        const b = (context.getInputValue('node', 'b') as number) || 0;
+        context.setOutputValue('node', 'result', a + b);
         return ExecutionResult.Continue;
       },
     },
@@ -40,10 +40,10 @@ export function createMathNodes(): NodeDefinition[] {
         { id: 'result', name: 'Result', type: PinType.Float, direction: 'output' },
       ],
       pure: true,
-      execute: (node, context) => {
-        const a = (context.getInputValue(node.id, 'a') as number) || 1;
-        const b = (context.getInputValue(node.id, 'b') as number) || 1;
-        context.setOutputValue(node.id, 'result', a * b);
+      execute: (_node, context) => {
+        const a = (context.getInputValue('node', 'a') as number) || 1;
+        const b = (context.getInputValue('node', 'b') as number) || 1;
+        context.setOutputValue('node', 'result', a * b);
         return ExecutionResult.Continue;
       },
     },
@@ -61,11 +61,11 @@ export function createMathNodes(): NodeDefinition[] {
         { id: 'result', name: 'Result', type: PinType.Float, direction: 'output' },
       ],
       pure: true,
-      execute: (node, context) => {
-        const value = (context.getInputValue(node.id, 'value') as number) || 0;
-        const min = (context.getInputValue(node.id, 'min') as number) || 0;
-        const max = (context.getInputValue(node.id, 'max') as number) || 1;
-        context.setOutputValue(node.id, 'result', Math.max(min, Math.min(max, value)));
+      execute: (_node, context) => {
+        const value = (context.getInputValue('node', 'value') as number) || 0;
+        const min = (context.getInputValue('node', 'min') as number) || 0;
+        const max = (context.getInputValue('node', 'max') as number) || 1;
+        context.setOutputValue('node', 'result', Math.max(min, Math.min(max, value)));
         return ExecutionResult.Continue;
       },
     },

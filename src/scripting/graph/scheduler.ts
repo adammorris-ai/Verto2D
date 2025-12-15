@@ -2,7 +2,7 @@
  * Latent action scheduler - manages yielding/resuming nodes
  */
 
-import { NodeId } from './compiler';
+import { NodeId } from './graphTypes';
 
 export interface LatentAction {
   nodeId: NodeId;

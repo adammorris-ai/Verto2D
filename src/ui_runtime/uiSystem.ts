@@ -2,17 +2,14 @@
  * UI Runtime System - manages UI widgets and rendering
  */
 
-import { UIWidget, WidgetType, createTextWidget, createButtonWidget, createPanelWidget } from './widgets';
+import { UIWidget, WidgetType } from './widgets';
 import { Vec2 } from '../core/math/vec2';
-import { Color } from '../core/math/color';
 import { LayoutManager } from './layout';
 
 export class UISystem {
   private widgets = new Map<string, UIWidget>();
   private rootWidgets: string[] = []; // Widgets without parents
   private layoutManager = new LayoutManager();
-  private hoveredWidget: string | null = null;
-  private clickedWidget: string | null = null;
 
   /**
    * Add widget
@@ -126,18 +123,13 @@ export class UISystem {
 
     if (pressed && button === 0) {
       // Left click
-      this.clickedWidget = widget;
       if (widget) {
         const w = this.widgets.get(widget);
         if (w && w.type === WidgetType.Button && w.enabled) {
           w.onClick?.();
         }
       }
-    } else {
-      this.clickedWidget = null;
     }
-
-    this.hoveredWidget = widget;
   }
 
   /**
@@ -207,7 +199,5 @@ export class UISystem {
   clear(): void {
     this.widgets.clear();
     this.rootWidgets = [];
-    this.hoveredWidget = null;
-    this.clickedWidget = null;
   }
 }

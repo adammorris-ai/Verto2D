@@ -15,7 +15,6 @@ export type ComponentType = number;
  */
 export class ComponentStore<T> {
   private components = new Map<Entity, T>();
-  private nextTypeId = 0;
 
   /**
    * Get component for entity
@@ -75,7 +74,7 @@ export class ComponentStore<T> {
  */
 let nextComponentType = 1;
 
-export function getComponentType<T>(): ComponentType {
+export function getComponentType(): ComponentType {
   // Use a simple incrementing counter for component types
   // In a real implementation, this might use a symbol or string-based system
   return nextComponentType++;

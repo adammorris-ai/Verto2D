@@ -3,8 +3,11 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  test: {
-    globals: true,
-    environment: 'jsdom',
+  root: '.',
+  build: {
+    outDir: 'dist',
+    rollupOptions: {
+      input: './public/index.html',
+    },
   },
 });

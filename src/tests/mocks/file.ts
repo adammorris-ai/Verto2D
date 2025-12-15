@@ -11,11 +11,11 @@ export function createMockFile(
   let buffer: ArrayBuffer;
   if (typeof content === 'string') {
     const encoder = new TextEncoder();
-    buffer = encoder.encode(content).buffer;
+    buffer = encoder.encode(content).buffer as ArrayBuffer;
   } else if (content instanceof ArrayBuffer) {
     buffer = content;
   } else {
-    buffer = content.buffer;
+    buffer = content.buffer as ArrayBuffer;
   }
   
   const file = Object.create(File.prototype);

@@ -9,7 +9,6 @@ import {
   TextureAsset,
   AudioClipAsset,
   SpriteSheetAsset,
-  generateGUID,
 } from './types';
 import { ImportedFile } from './importer';
 import { Texture } from '../render/webgl/texture';

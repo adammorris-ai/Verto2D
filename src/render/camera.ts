@@ -136,11 +136,6 @@ export class Camera {
     const nx = (screenX / this.viewportWidth) * 2 - 1;
     const ny = 1 - (screenY / this.viewportHeight) * 2; // Flip Y
 
-    // Apply inverse view-projection
-    const inv = this.viewProjectionMatrix.clone();
-    inv.invert();
-
-    const arr = inv.toArray();
     // For 2D orthographic, simplified calculation
     const halfWidth = (this.viewportWidth / this.zoom) * 0.5;
     const halfHeight = (this.viewportHeight / this.zoom) * 0.5;

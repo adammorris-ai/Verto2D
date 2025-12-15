@@ -1,10 +1,9 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { HeadlessRenderer, Renderer } from '../render/renderer';
+import { HeadlessRenderer } from '../render/renderer';
 import { Shader } from '../render/webgl/shader';
 import { Texture } from '../render/webgl/texture';
 import { Material } from '../render/materials';
 import { Color } from '../core/math/color';
-import { GLContext } from '../render/webgl/glContext';
 
 describe('Renderer Command Buffer', () => {
   let renderer: HeadlessRenderer;

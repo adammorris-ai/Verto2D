@@ -3,6 +3,7 @@
  */
 
 import { NodeDefinition, ExecutionContext, ExecutionResult } from '../graph/nodeRegistry';
+import { Node as GraphNode } from '../graph/graphTypes';
 import { PinDefinition } from '../graph/pinTypes';
 import { APICatalog, APIFunction } from './apiCatalog';
 
@@ -85,7 +86,9 @@ export class NodeAutoGenerator {
       outputs,
       pure: func.pure,
       latent: func.latent,
-      execute: implementation || this.createDefaultImplementation(func),
+      execute: implementation 
+        ? (_node: GraphNode, context: ExecutionContext) => implementation(context)
+        : this.createDefaultImplementation(func),
     };
   }
 
@@ -106,11 +109,10 @@ export class NodeAutoGenerator {
   /**
    * Create default implementation (placeholder)
    */
-  private createDefaultImplementation(func: APIFunction): (context: ExecutionContext) => ExecutionResult {
-    return (context: ExecutionContext) => {
+  private createDefaultImplementation(_func: APIFunction): (node: GraphNode, context: ExecutionContext) => ExecutionResult {
+    return (_node: GraphNode, _context: ExecutionContext) => {
       // Default implementation - would call actual engine function
       // This is a placeholder that would be replaced with actual implementations
-      console.warn(`No implementation registered for ${func.name}`);
       return ExecutionResult.Continue;
     };
   }

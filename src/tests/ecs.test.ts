@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { World } from '../ecs/world';
 import { Entity, NULL_ENTITY } from '../ecs/entity';
-import { getComponentType, resetComponentTypes, ComponentStore } from '../ecs/components';
+import { getComponentType, resetComponentTypes } from '../ecs/components';
 import { Query } from '../ecs/queries';
 import { SystemManager } from '../ecs/systems';
 import { EntityError } from '../core/errors';
@@ -31,9 +31,9 @@ describe('ECS World', () => {
   beforeEach(() => {
     world = new World();
     resetComponentTypes();
-    PositionType = getComponentType<Position>();
-    VelocityType = getComponentType<Velocity>();
-    HealthType = getComponentType<Health>();
+    PositionType = getComponentType();
+    VelocityType = getComponentType();
+    HealthType = getComponentType();
   });
 
   describe('Entity Lifecycle', () => {

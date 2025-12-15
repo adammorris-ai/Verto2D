@@ -2,7 +2,7 @@
  * Audio integration nodes
  */
 
-import { NodeDefinition, ExecutionContext, ExecutionResult, NodeCategory } from '../graph/nodeRegistry';
+import { NodeCategory } from '../graph/nodeRegistry';
 import { PinType } from '../graph/pinTypes';
 import { APICatalog } from '../autogen/apiCatalog';
 

@@ -3,7 +3,7 @@
  */
 
 import { Vec2 } from '../core/math/vec2';
-import { UIWidget, Widget } from './widgets';
+import { UIWidget } from './widgets';
 
 export enum LayoutMode {
   Absolute = 'absolute',
@@ -27,7 +27,7 @@ export class LayoutManager {
    */
   calculateLayout(
     widget: UIWidget,
-    parentSize: Vec2,
+    _parentSize: Vec2,
     parentPosition: Vec2 = Vec2.zero()
   ): void {
     // Simple absolute layout for now

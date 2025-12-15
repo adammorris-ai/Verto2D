@@ -35,15 +35,17 @@ export function serializeValue(value: unknown): unknown {
   throw new Error(`Cannot serialize value: ${typeof value}`);
 }
 
-export function deserializeValue<T>(data: unknown, type?: new () => T): T {
+export function deserializeValue<T>(data: unknown, type?: new () => T & { deserialize?: (data: unknown) => void }): T {
   if (data === null || data === undefined) {
     return data as T;
   }
 
-  if (type && 'deserialize' in type.prototype && typeof type.prototype.deserialize === 'function') {
+  if (type) {
     const instance = new type();
-    instance.deserialize(data);
-    return instance;
+    if (instance.deserialize && typeof instance.deserialize === 'function') {
+      instance.deserialize(data);
+      return instance as T;
+    }
   }
 
   return data as T;

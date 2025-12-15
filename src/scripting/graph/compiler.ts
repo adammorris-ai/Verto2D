@@ -2,7 +2,7 @@
  * Graph compiler - converts graph into execution plan
  */
 
-import { Graph, Node, Edge } from './graphTypes';
+import { Graph, NodeId } from './graphTypes';
 import { PinType } from './pinTypes';
 import { NodeRegistry } from './nodeRegistry';
 import { GraphValidator, ValidationError } from './validator';
@@ -21,14 +21,12 @@ export interface ExecutionNode {
   dependencies: Set<NodeId>; // Nodes that must execute before this
 }
 
-export type NodeId = string;
+// NodeId is exported from graphTypes
 
 export class GraphCompiler {
-  private registry: NodeRegistry;
   private validator: GraphValidator;
 
   constructor(registry: NodeRegistry) {
-    this.registry = registry;
     this.validator = new GraphValidator(registry);
   }
 

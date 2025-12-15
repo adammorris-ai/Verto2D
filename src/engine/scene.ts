@@ -3,8 +3,6 @@
  */
 
 import { World } from '../ecs/world';
-import { Entity } from '../ecs/entity';
-import { serializeValue } from '../core/serialize';
 
 export interface SceneMetadata {
   name: string;
@@ -88,7 +86,7 @@ export class Scene {
   /**
    * Deserialize entities and components
    */
-  private deserializeEntities(entities: unknown[]): void {
+  private deserializeEntities(_entities: unknown[]): void {
     // For now, do nothing
     // Full implementation in Phase 2 tests will handle this
   }

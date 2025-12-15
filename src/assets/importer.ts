@@ -13,10 +13,8 @@ export interface ImportedFile {
 }
 
 export class AssetImporter {
-  private db: AssetDB;
-
-  constructor(db: AssetDB) {
-    this.db = db;
+  constructor(_db: AssetDB) {
+    // DB is stored for future use
   }
 
   /**

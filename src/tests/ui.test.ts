@@ -2,7 +2,6 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { UISystem } from '../ui_runtime/uiSystem';
 import { createTextWidget, createButtonWidget, createPanelWidget, WidgetType } from '../ui_runtime/widgets';
 import { Vec2 } from '../core/math/vec2';
-import { Color } from '../core/math/color';
 
 describe('UI Widgets', () => {
   it('should create text widget', () => {

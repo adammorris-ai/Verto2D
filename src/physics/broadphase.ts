@@ -22,14 +22,6 @@ export class SpatialGrid {
     this.cellSize = cellSize;
   }
 
-  /**
-   * Get cell key from position
-   */
-  private getCellKey(x: number, y: number): string {
-    const cellX = Math.floor(x / this.cellSize);
-    const cellY = Math.floor(y / this.cellSize);
-    return `${cellX},${cellY}`;
-  }
 
   /**
    * Get cells that a collider overlaps

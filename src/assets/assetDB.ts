@@ -2,7 +2,7 @@
  * IndexedDB asset cache
  */
 
-import { AssetGUID, Asset, AssetMetadata } from './types';
+import { AssetGUID, Asset } from './types';
 
 const DB_NAME = 'verto-assets';
 const DB_VERSION = 1;

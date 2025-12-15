@@ -4,7 +4,7 @@
 
 import { Graph, Node, Edge } from './graphTypes';
 import { PinType } from './pinTypes';
-import { NodeRegistry, NodeDefinition } from './nodeRegistry';
+import { NodeRegistry } from './nodeRegistry';
 
 export interface ValidationError {
   nodeId?: string;

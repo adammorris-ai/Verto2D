@@ -1,16 +1,14 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { World } from '../ecs/world';
 import { Entity } from '../ecs/entity';
-import { getComponentType, resetComponentTypes } from '../ecs/components';
+import { getComponentType, resetComponentTypes, ComponentType } from '../ecs/components';
 import { Vec2 } from '../core/math/vec2';
 import {
-  RigidBody,
   BodyType,
   createRigidBody,
   setMass,
 } from '../physics/rigidBody';
 import {
-  Collider,
   ColliderType,
   ColliderComponent,
   createAABB,
@@ -318,9 +316,9 @@ describe('PhysicsWorld', () => {
   beforeEach(() => {
     resetComponentTypes();
     world = new World();
-    RigidBodyType = getComponentType<RigidBody>();
-    ColliderType = getComponentType<ColliderComponent>();
-    PositionType = getComponentType<Vec2>();
+    RigidBodyType = getComponentType();
+    ColliderType = getComponentType();
+    PositionType = getComponentType();
 
     physicsWorld = new PhysicsWorld(world, RigidBodyType, ColliderType, PositionType);
   });

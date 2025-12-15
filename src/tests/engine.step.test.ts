@@ -1,9 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { Engine } from '../engine/engine';
 import { Scene } from '../engine/scene';
-import { World } from '../ecs/world';
 import { getComponentType, resetComponentTypes } from '../ecs/components';
-import { Entity } from '../ecs/entity';
 import { Query } from '../ecs/queries';
 
 interface Position {
@@ -24,8 +22,8 @@ describe('Engine Step', () => {
 
   beforeEach(() => {
     resetComponentTypes();
-    PositionType = getComponentType<Position>();
-    VelocityType = getComponentType<Velocity>();
+    PositionType = getComponentType();
+    VelocityType = getComponentType();
     
     engine = new Engine({ fixedDeltaTime: 1 / 60 });
     scene = new Scene('TestScene');

@@ -9,7 +9,6 @@ import {
   generateGUID,
   TextureAsset,
   AudioClipAsset,
-  SpriteSheetAsset,
 } from '../assets/types';
 import { HeadlessRenderer } from '../render/renderer';
 import { setupIndexedDBMock } from './mocks/indexedDB';

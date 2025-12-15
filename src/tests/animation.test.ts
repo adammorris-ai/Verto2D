@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { AnimationClip, SpriteAnimation, AnimationFrame } from '../animation/spriteAnimation';
+import { AnimationClip, SpriteAnimation } from '../animation/spriteAnimation';
 import { Timeline } from '../animation/timeline';
-import { Animator, AnimationTransition } from '../animation/animator';
+import { Animator } from '../animation/animator';
 
 describe('AnimationClip', () => {
   let clip: AnimationClip;

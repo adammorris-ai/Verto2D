@@ -2,7 +2,7 @@
  * Graph data structures - nodes, edges, graphs
  */
 
-import { Pin, PinType } from './pinTypes';
+import { Pin } from './pinTypes';
 
 export type NodeId = string;
 export type EdgeId = string;

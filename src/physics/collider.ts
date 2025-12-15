@@ -65,24 +65,26 @@ export function createCircle(radius: number): CircleCollider {
 export function getColliderBounds(
   collider: Collider,
   position: Vec2,
-  rotation: number = 0
+  _rotation: number = 0
 ): { min: Vec2; max: Vec2 } {
   if (collider.type === ColliderType.AABB) {
     // For AABB, rotation is ignored for simplicity (axis-aligned)
+    const aabb = collider as AABBCollider;
     const min = position.clone();
-    min.add(collider.min);
+    min.add(aabb.min);
     const max = position.clone();
-    max.add(collider.max);
+    max.add(aabb.max);
     return { min, max };
   } else {
     // Circle bounds
+    const circle = collider as CircleCollider;
     const min = new Vec2(
-      position.x - collider.radius,
-      position.y - collider.radius
+      position.x - circle.radius,
+      position.y - circle.radius
     );
     const max = new Vec2(
-      position.x + collider.radius,
-      position.y + collider.radius
+      position.x + circle.radius,
+      position.y + circle.radius
     );
     return { min, max };
   }
@@ -114,9 +116,19 @@ export function checkOverlap(
   } else {
     // Mixed types - convert AABB to circle approximation or use more complex check
     if (colliderA.type === ColliderType.AABB) {
-      return checkAABBCircleOverlap(colliderA, positionA, colliderB, positionB);
+      return checkAABBCircleOverlap(
+        colliderA as AABBCollider,
+        positionA,
+        colliderB as CircleCollider,
+        positionB
+      );
     } else {
-      return checkAABBCircleOverlap(colliderB, positionB, colliderA, positionA);
+      return checkAABBCircleOverlap(
+        colliderB as AABBCollider,
+        positionB,
+        colliderA as CircleCollider,
+        positionA
+      );
     }
   }
 }

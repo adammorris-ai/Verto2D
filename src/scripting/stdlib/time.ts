@@ -2,7 +2,7 @@
  * Time nodes (latent actions)
  */
 
-import { NodeDefinition, ExecutionContext, ExecutionResult, NodeCategory } from '../graph/nodeRegistry';
+import { NodeDefinition, ExecutionResult, NodeCategory } from '../graph/nodeRegistry';
 import { PinType } from '../graph/pinTypes';
 
 export function createTimeNodes(): NodeDefinition[] {
@@ -21,9 +21,8 @@ export function createTimeNodes(): NodeDefinition[] {
       ],
       pure: false,
       latent: true,
-      execute: (node, context) => {
+      execute: (_node, _context) => {
         // Latent action - yield and schedule resume
-        const duration = (context.getInputValue(node.id, 'duration') as number) || 1.0;
         // In real implementation, would use scheduler
         return ExecutionResult.Yield;
       },

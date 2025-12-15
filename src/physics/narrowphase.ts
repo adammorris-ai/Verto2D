@@ -3,7 +3,7 @@
  */
 
 import { Vec2 } from '../core/math/vec2';
-import { Collider, ColliderType, checkOverlap } from './collider';
+import { ColliderType, checkOverlap } from './collider';
 import { CollisionPair } from './broadphase';
 
 export interface Contact {

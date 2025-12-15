@@ -2,7 +2,7 @@
  * Flow control nodes
  */
 
-import { NodeDefinition, ExecutionContext, ExecutionResult, NodeCategory } from '../graph/nodeRegistry';
+import { NodeDefinition, ExecutionResult, NodeCategory } from '../graph/nodeRegistry';
 import { PinType } from '../graph/pinTypes';
 
 export function createFlowNodes(): NodeDefinition[] {
@@ -21,11 +21,11 @@ export function createFlowNodes(): NodeDefinition[] {
         { id: 'then2', name: 'Then 2', type: PinType.Exec, direction: 'output' },
       ],
       pure: false,
-      execute: (node, context) => {
+      execute: (_node, context) => {
         // Execute outputs in sequence
-        context.executeNode(node.outputs[0]?.id || '');
-        context.executeNode(node.outputs[1]?.id || '');
-        context.executeNode(node.outputs[2]?.id || '');
+        context.executeNode('output0');
+        context.executeNode('output1');
+        context.executeNode('output2');
         return ExecutionResult.Continue;
       },
     },

@@ -2,7 +2,7 @@
  * Async asset loaders
  */
 
-import { AssetGUID, Asset } from './types';
+import { AssetGUID } from './types';
 import { AssetDB } from './assetDB';
 import { AssetPipeline, RuntimeAsset } from './pipeline';
 

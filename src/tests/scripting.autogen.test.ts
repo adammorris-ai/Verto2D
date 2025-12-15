@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { APICatalog } from '../scripting/autogen/apiCatalog';
 import { NodeAutoGenerator } from '../scripting/autogen/nodeAutoGen';
-import { NodeRegistry, NodeCategory, ExecutionContext, ExecutionResult } from '../scripting/graph/nodeRegistry';
+import { NodeRegistry, NodeCategory, ExecutionResult } from '../scripting/graph/nodeRegistry';
 import { PinType } from '../scripting/graph/pinTypes';
 import { registerECSNodes } from '../scripting/engine_nodes/ecsNodes';
 import { registerInputNodes } from '../scripting/engine_nodes/inputNodes';

@@ -4,7 +4,6 @@ import { PrefabRegistry, PrefabDefinition } from '../engine/prefab';
 import { Project } from '../engine/project';
 import { World } from '../ecs/world';
 import { getComponentType, resetComponentTypes } from '../ecs/components';
-import { Entity } from '../ecs/entity';
 
 interface Position {
   x: number;
@@ -24,8 +23,8 @@ describe('Prefab System', () => {
 
   beforeEach(() => {
     resetComponentTypes();
-    PositionType = getComponentType<Position>();
-    HealthType = getComponentType<Health>();
+    PositionType = getComponentType();
+    HealthType = getComponentType();
     
     registry = new PrefabRegistry();
     world = new World();
@@ -122,7 +121,7 @@ describe('Scene Serialization', () => {
 
   beforeEach(() => {
     resetComponentTypes();
-    PositionType = getComponentType<Position>();
+    PositionType = getComponentType();
     scene = new Scene('TestScene');
   });
 
@@ -167,7 +166,7 @@ describe('Project Serialization', () => {
 
   beforeEach(() => {
     resetComponentTypes();
-    PositionType = getComponentType<Position>();
+    PositionType = getComponentType();
     project = new Project('TestProject');
   });
 

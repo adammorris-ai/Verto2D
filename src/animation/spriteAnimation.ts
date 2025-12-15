@@ -2,8 +2,6 @@
  * Sprite animation system
  */
 
-import { AssetGUID } from '../assets/types';
-
 export interface AnimationFrame {
   spriteIndex: number;
   duration: number; // Duration in seconds

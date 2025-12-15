@@ -2,10 +2,10 @@
  * Graph runtime - executes compiled graphs
  */
 
-import { Graph } from './graphTypes';
 import { PinType } from './pinTypes';
 import { NodeRegistry, ExecutionContext, ExecutionResult } from './nodeRegistry';
 import { ExecutionPlan, ExecutionNode } from './compiler';
+import { NodeId } from './graphTypes';
 
 export interface RuntimeState {
   plan: ExecutionPlan;
@@ -15,7 +15,7 @@ export interface RuntimeState {
   breakpoints: Set<NodeId>;
 }
 
-export type NodeId = string;
+// NodeId is exported from graphTypes
 
 export class GraphRuntime {
   private registry: NodeRegistry;
@@ -197,11 +197,11 @@ export class GraphRuntime {
   /**
    * Propagate value to connected nodes
    */
-  private propagateValue(fromNodeId: NodeId, fromPinId: string, value: unknown): void {
+  private propagateValue(_fromNodeId: NodeId, _fromPinId: string, _value: unknown): void {
     if (!this.state) return;
 
     // Find nodes connected to this output
-    const consumers = this.state.plan.dataFlow.get(fromNodeId);
+    const consumers = this.state.plan.dataFlow.get(_fromNodeId);
     if (!consumers) return;
 
     for (const consumerId of consumers) {

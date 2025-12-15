@@ -4,7 +4,7 @@
 
 import { GLContext } from './webgl/glContext';
 import { Camera } from './camera';
-import { SpriteBatch, DrawCall } from './webgl/spriteBatch';
+import { SpriteBatch } from './webgl/spriteBatch';
 import { Mesh } from './webgl/mesh';
 import { Material } from './materials';
 import { Sprite } from './webgl/spriteBatch';

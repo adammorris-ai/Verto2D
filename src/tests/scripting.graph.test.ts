@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { createGraph, createNode, addNode, addEdge, createEdge, Graph } from '../scripting/graph/graphTypes';
+import { createGraph, createNode, addNode, addEdge, createEdge } from '../scripting/graph/graphTypes';
 import { Pin, PinType } from '../scripting/graph/pinTypes';
-import { NodeRegistry, NodeCategory } from '../scripting/graph/nodeRegistry';
+import { NodeRegistry, NodeCategory, ExecutionResult } from '../scripting/graph/nodeRegistry';
 import { GraphValidator } from '../scripting/graph/validator';
 import { GraphCompiler } from '../scripting/graph/compiler';
 import { GraphRuntime } from '../scripting/graph/runtime';
@@ -301,25 +301,25 @@ describe('Graph Runtime', () => {
     registry = new NodeRegistry();
     
     // Register test nodes
-    registry.register({
-      type: 'test.setValue',
-      name: 'Set Value',
-      category: NodeCategory.Custom,
-      inputs: [
-        { id: 'exec', name: 'Exec', type: PinType.Exec, direction: 'input' },
-        { id: 'value', name: 'Value', type: PinType.Float, direction: 'input', defaultValue: 0 },
-      ],
-      outputs: [
-        { id: 'exec', name: 'Exec', type: PinType.Exec, direction: 'output' },
-        { id: 'result', name: 'Result', type: PinType.Float, direction: 'output' },
-      ],
-      pure: false,
-      execute: (node, context) => {
-        const value = context.getInputValue(node.id, 'value') as number;
-        context.setOutputValue(node.id, 'result', value);
-        return ExecutionResult.Continue;
-      },
-    });
+      registry.register({
+        type: 'test.setValue',
+        name: 'Set Value',
+        category: NodeCategory.Custom,
+        inputs: [
+          { id: 'exec', name: 'Exec', type: PinType.Exec, direction: 'input' },
+          { id: 'value', name: 'Value', type: PinType.Float, direction: 'input', defaultValue: 0 },
+        ],
+        outputs: [
+          { id: 'exec', name: 'Exec', type: PinType.Exec, direction: 'output' },
+          { id: 'result', name: 'Result', type: PinType.Float, direction: 'output' },
+        ],
+        pure: false,
+        execute: (_node, context) => {
+          const value = context.getInputValue('test', 'value') as number;
+          context.setOutputValue('test', 'result', value);
+          return ExecutionResult.Continue;
+        },
+      });
 
     runtime = new GraphRuntime(registry);
   });
@@ -334,16 +334,17 @@ describe('Graph Runtime', () => {
   });
 
   it('should dispatch events', () => {
-    registry.register({
-      type: 'event.beginPlay',
-      name: 'Event BeginPlay',
-      category: NodeCategory.Flow,
-      inputs: [],
-      outputs: [
-        { id: 'exec', name: 'Exec', type: PinType.Exec, direction: 'output' },
-      ],
-      pure: false,
-    });
+      registry.register({
+        type: 'event.beginPlay',
+        name: 'Event BeginPlay',
+        category: NodeCategory.Flow,
+        inputs: [],
+        outputs: [
+          { id: 'exec', name: 'Exec', type: PinType.Exec, direction: 'output' },
+        ],
+        pure: false,
+        execute: () => ExecutionResult.Continue,
+      });
 
     const graph = createGraph('test', 'Test');
     const node = createNode('node1', 'event.beginPlay', { x: 0, y: 0 }, [], [

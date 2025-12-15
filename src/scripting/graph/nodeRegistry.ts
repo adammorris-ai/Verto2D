@@ -2,7 +2,7 @@
  * Node registry - manages available node types
  */
 
-import { Pin, PinDefinition, PinType } from './pinTypes';
+import { PinDefinition } from './pinTypes';
 import { Node } from './graphTypes';
 
 export enum NodeCategory {

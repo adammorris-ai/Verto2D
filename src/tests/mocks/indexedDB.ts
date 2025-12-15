@@ -114,7 +114,7 @@ class IDBObjectStore {
 
   put(value: any): IDBRequest {
     const request = new IDBRequest(this, this.transaction);
-    const key = value[this.keyPath as string];
+    const key = String(value[this.keyPath as string]);
     this.data.set(key, value);
     
     // Update indexes
@@ -133,7 +133,8 @@ class IDBObjectStore {
 
   get(key: IDBValidKey): IDBRequest {
     const request = new IDBRequest(this, this.transaction);
-    const value = this.data.get(key);
+    const keyStr = String(key);
+    const value = this.data.get(keyStr);
     request.result = value !== undefined ? value : null;
     setTimeout(() => request.dispatchEvent({ type: 'success' } as Event), 0);
     return request;
@@ -141,16 +142,17 @@ class IDBObjectStore {
 
   delete(key: IDBValidKey): IDBRequest {
     const request = new IDBRequest(this, this.transaction);
-    const value = this.data.get(key);
+    const keyStr = String(key);
+    const value = this.data.get(keyStr);
     if (value) {
-      this.data.delete(key);
+      this.data.delete(keyStr);
       
       // Update indexes
       for (const [indexName, indexMap] of this.indexes.entries()) {
         const indexValue = value[indexName];
         const keySet = indexMap.get(indexValue);
         if (keySet) {
-          keySet.delete(key as string);
+          keySet.delete(keyStr);
           if (keySet.size === 0) {
             indexMap.delete(indexValue);
           }
@@ -240,7 +242,7 @@ class IDBDatabase {
 const databases = new Map<string, IDBDatabase>();
 
 export function setupIndexedDBMock(): void {
-  (global as any).indexedDB = {
+  (globalThis as any).indexedDB = {
     open: (name: string, version?: number): IDBOpenDBRequest => {
       const request = new IDBOpenDBRequest(null, null);
       const dbVersion = version || 1;
@@ -262,7 +264,7 @@ export function setupIndexedDBMock(): void {
             oldVersion: existingDb?.version || 0,
             newVersion: dbVersion,
             type: 'upgradeneeded',
-          } as IDBVersionChangeEvent;
+          } as unknown as IDBVersionChangeEvent;
           request.dispatchUpgradeNeeded(event);
         }
         
