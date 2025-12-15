@@ -50,3 +50,11 @@ export * from './assets/loaders';
 export * from './input/input';
 export * from './input/bindings';
 export * from './input/inputManager';
+
+// Physics
+export * from './physics/rigidBody';
+export * from './physics/collider';
+export * from './physics/broadphase';
+export * from './physics/narrowphase';
+export * from './physics/solver';
+export * from './physics/physicsWorld';
