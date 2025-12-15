@@ -36,9 +36,9 @@ A full web-based game engine with Blueprints-like node scripting system.
 - ✅ Collision resolution (impulse-based solver)
 - ✅ Collision events (enter/exit)
 - ✅ Raycast support
-- ✅ Comprehensive test suite (186 tests passing)
+- ✅ Comprehensive test suite (198 tests passing)
 
-**Current Progress**: 7 of 10 phases complete. Core scripting system implemented. Next: Phase 8 - Engine Node Packs & Phase 9 - Animation/UI.
+**Current Progress**: 8 of 10 phases complete. Engine node packs and auto-generation implemented. Next: Phase 9 - Animation/UI Runtime & Phase 10 - Editor UI.
 
 ## Development
 
@@ -137,16 +137,17 @@ Note: Editor UI is not yet implemented (Phase 10). The dev server currently show
 - Standard library nodes (Flow, Math, Time)
 - Comprehensive test suite
 
-### Phase 8 - Engine Node Packs
-- Flow nodes (Events, Sequence, Branch, Loops)
-- Variable nodes
-- Math/Logic nodes
-- Vector nodes
-- String/Array nodes
-- Time nodes
-- Debug nodes
-- Engine/World nodes
-- Auto Node Generation from API catalog
+### Phase 8 - Engine Node Packs ✅
+- API Catalog system (describes engine functions)
+- Auto Node Generation (creates nodes from API catalog)
+- ECS nodes (Spawn Entity, Destroy Entity, Get/Set Component)
+- Transform nodes (Get/Set Position, Add Movement Input)
+- Physics nodes (Set Velocity, Add Force, Collision Events)
+- Input nodes (Get Input Action Value, Is Pressed/Held)
+- Audio nodes (Play Sound, Stop Sound)
+- UI nodes (Set UI Text, Show/Hide Widget)
+- Animation nodes (Play Animation, Set Speed)
+- Extensible system for adding more engine nodes
 
 ### Phase 9 - Animation + UI Runtime
 - Sprite animations
