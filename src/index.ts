@@ -38,3 +38,10 @@ export * from './render/webgl/mesh';
 export * from './render/webgl/texture';
 export * from './render/webgl/spriteBatch';
 export * from './render/webgl/defaultShaders';
+
+// Assets
+export * from './assets/types';
+export * from './assets/assetDB';
+export * from './assets/importer';
+export * from './assets/pipeline';
+export * from './assets/loaders';
