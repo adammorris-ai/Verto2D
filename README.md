@@ -4,7 +4,7 @@ A full web-based game engine with Blueprints-like node scripting system.
 
 ## Status
 
-**Phase 0, 1, 2, 3 & 4 Complete**: Foundation, ECS core, Engine loop, Render backend, and Asset pipeline are implemented and tested.
+**Phase 0, 1, 2, 3, 4 & 5 Complete**: Foundation, ECS core, Engine loop, Render backend, Asset pipeline, and Input system are implemented and tested.
 
 - ✅ Core math (Vec2, Vec3, Mat4, Quat, Color)
 - ✅ Deterministic Time system
@@ -26,7 +26,10 @@ A full web-based game engine with Blueprints-like node scripting system.
 - ✅ Asset importer with type detection
 - ✅ Asset pipeline (convert to runtime-ready forms)
 - ✅ Async asset loaders
-- ✅ Comprehensive test suite (114 tests passing)
+- ✅ Input state tracking (keyboard, mouse, touch)
+- ✅ Action bindings system
+- ✅ Input manager with event handling
+- ✅ Comprehensive test suite (143 tests passing)
 
 ## Development
 
@@ -97,9 +100,14 @@ Note: Editor UI is not yet implemented (Phase 10). The dev server currently show
 - Async asset loaders with GUID resolution
 - File API support with test mocks
 
-### Phase 5 - Input System
-- Keyboard/Mouse/Touch
-- Action bindings
+### Phase 5 - Input System ✅
+- Keyboard input with KeyCode enum
+- Mouse input (position, buttons, wheel)
+- Touch input (multi-touch support)
+- Input state tracking (pressed/held/released)
+- Action bindings (map keys/buttons to game actions)
+- Input manager with DOM event handling
+- Frame-based state clearing
 
 ### Phase 6 - Physics 2D
 - Rigid bodies

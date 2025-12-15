@@ -45,3 +45,8 @@ export * from './assets/assetDB';
 export * from './assets/importer';
 export * from './assets/pipeline';
 export * from './assets/loaders';
+
+// Input
+export * from './input/input';
+export * from './input/bindings';
+export * from './input/inputManager';
