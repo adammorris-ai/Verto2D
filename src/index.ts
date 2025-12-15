@@ -58,3 +58,14 @@ export * from './physics/broadphase';
 export * from './physics/narrowphase';
 export * from './physics/solver';
 export * from './physics/physicsWorld';
+
+// Scripting
+export * from './scripting/graph/pinTypes';
+export * from './scripting/graph/graphTypes';
+export * from './scripting/graph/nodeRegistry';
+export * from './scripting/graph/validator';
+export * from './scripting/graph/compiler';
+export * from './scripting/graph/runtime';
+export * from './scripting/graph/scheduler';
+export * from './scripting/graph/debugger';
+export * from './scripting/graph/serializer';

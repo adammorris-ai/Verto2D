@@ -36,9 +36,9 @@ A full web-based game engine with Blueprints-like node scripting system.
 - ✅ Collision resolution (impulse-based solver)
 - ✅ Collision events (enter/exit)
 - ✅ Raycast support
-- ✅ Comprehensive test suite (171 tests passing)
+- ✅ Comprehensive test suite (186 tests passing)
 
-**Current Progress**: 6 of 10 phases complete. Next: Phase 7 - Scripting (Blueprints-like graph engine).
+**Current Progress**: 7 of 10 phases complete. Core scripting system implemented. Next: Phase 8 - Engine Node Packs & Phase 9 - Animation/UI.
 
 ## Development
 
@@ -124,15 +124,18 @@ Note: Editor UI is not yet implemented (Phase 10). The dev server currently show
 - Collision detection
 - Simple impulse resolution
 
-### Phase 7 - Scripting: Blueprints-like Graph Engine
-- Node graph model
-- Pin types (Exec, Bool, Int, Float, String, Vec2, etc.)
-- Node registry
-- Validator
-- Compiler
-- Runtime with event dispatch
-- Latent actions (Delay, Timelines)
-- Debugger
+### Phase 7 - Scripting: Blueprints-like Graph Engine ✅
+- Node graph model (nodes, pins, edges)
+- Pin type system (Exec, Bool, Int, Float, String, Vec2, Vec3, Color, EntityRef, AssetRef, Array, Any)
+- Node registry with categories and search
+- Graph validator (missing pins, type mismatch, cycles, latent in pure functions)
+- Graph compiler (execution plan with topological sort)
+- Graph runtime with event dispatch
+- Latent action scheduler (yield/resume)
+- Debugger (breakpoints, step, watch values)
+- Graph serialization
+- Standard library nodes (Flow, Math, Time)
+- Comprehensive test suite
 
 ### Phase 8 - Engine Node Packs
 - Flow nodes (Events, Sequence, Branch, Loops)
